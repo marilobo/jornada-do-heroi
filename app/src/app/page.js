@@ -3,7 +3,7 @@
 import { Avatar, Box, Card, CardContent, Divider, Drawer, Grid, Icon, ListItemButton, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
-import { useHeroesList } from "./states";
+import { useHeroesFilter, useFilteredHeroes, useHeroesList } from "./states";
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -11,16 +11,25 @@ async function getHeroes(){
 }
 
 export default function Topster() {
-  const setHeroesList = useHeroesList((state) => state.setHeroesList);
   const heroesList = useHeroesList((state) => state.heroesList);
+  const setHeroesList = useHeroesList((state) => state.setHeroesList);
+  const filterText = useHeroesFilter((state) => state.searchText);
+  const filteredHeroesList = useFilteredHeroes((state) => state.filteredHeroes);
+  const setFilteredHeroesList = useFilteredHeroes((state) => state.setFilteredHeroes);
   useEffect(() => {
     async function fetchData() {
       const heroes = await getHeroes();
       setHeroesList(heroes);
+      setFilteredHeroesList(heroes);
     }
 
     fetchData();
   }, [])
+
+  useEffect(() => {
+    const filteredHeroes = heroesList.filter((hero) => hero.name.toLowerCase().includes(filterText.toLowerCase()));
+    setFilteredHeroesList(filteredHeroes);
+  }, [filterText])
 
   return (
     <Box>
@@ -40,7 +49,7 @@ export default function Topster() {
         </Box>
       </Drawer>
       <Grid container sx={{marginLeft:14, width: "calc(100% - 340px)"}} spacing={8} justifyContent="flex-start">
-        {heroesList.map((hero) => 
+        {filteredHeroesList.map((hero) => 
           <Grid item key={hero.id}>
             <Card sx={{width:"11vw"}}>
               <CardContent>
