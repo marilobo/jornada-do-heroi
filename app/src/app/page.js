@@ -1,13 +1,27 @@
-import { Avatar, Box, Card, CardContent, Divider, Drawer, Grid, Icon, ListItemButton, ListItemText, MenuItem, MenuList, TextField, Typography } from "@mui/material";
+"use client"
+
+import { Avatar, Box, Card, CardContent, Divider, Drawer, Grid, Icon, ListItemButton, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
+import { useEffect } from "react";
+import { useHeroesList } from "./states";
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
   return response.json();
 }
 
-export default async function Topster() {
-  const heroes = await getHeroes();
+export default function Topster() {
+  const setHeroesList = useHeroesList((state) => state.setHeroesList);
+  const heroesList = useHeroesList((state) => state.heroesList);
+  useEffect(() => {
+    async function fetchData() {
+      const heroes = await getHeroes();
+      setHeroesList(heroes);
+    }
+
+    fetchData();
+  }, [])
+
   return (
     <Box>
       <Drawer variant="permanent" open={true} anchor="left"> 
@@ -26,7 +40,7 @@ export default async function Topster() {
         </Box>
       </Drawer>
       <Grid container sx={{marginLeft:14, width: "calc(100% - 340px)"}} spacing={8} justifyContent="flex-start">
-        {heroes.map((hero) => 
+        {heroesList.map((hero) => 
           <Grid item key={hero.id}>
             <Card sx={{width:"11vw"}}>
               <CardContent>
