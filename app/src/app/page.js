@@ -1,4 +1,5 @@
 import { Avatar, Box, Card, CardContent, Divider, Drawer, Grid, Icon, ListItemButton, ListItemText, MenuItem, MenuList, TextField, Typography } from "@mui/material";
+import FilterInput from "./components/filterInput";
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -44,7 +45,7 @@ export default async function Topster() {
         )};
       </Grid>
       <Drawer variant="permanent" open={true} anchor="right">
-        <TextField />
+        <FilterInput />
       </Drawer>
     </Box>
   );
