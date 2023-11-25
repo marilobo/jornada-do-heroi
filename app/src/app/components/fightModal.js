@@ -1,6 +1,8 @@
+import styles from '../styles.module.scss';
 import { Box, List, ListItem, ListItemText, Modal, Typography } from "@mui/material";
-import { useFightHeroes, useFightModal } from "../states";
+import { useFightHeroes, useFightModal, useWinner } from "../states";
 import FighterDetails from "./fighterDetails";
+import { useEffect } from 'react';
 
 export default function FightModal(){
   const isOpen = useFightModal((state) => state.open);
@@ -9,6 +11,8 @@ export default function FightModal(){
   const setFighterA = useFightHeroes((state) => state.setFighterA);
   const fighterB = useFightHeroes((state) => state.fighterB);
   const setFighterB = useFightHeroes((state) => state.setFighterB);
+  const winnerName = useWinner((state) => state.winner);
+  const setWinnerName = useWinner((state) => state.setWinner);
 
   const handleClose = () => {
     setOpen(false);
@@ -17,13 +21,27 @@ export default function FightModal(){
     setFighterB(null);
   };
 
+  useEffect(() => {
+    if(fighterB !== null){
+
+      const fighterASum = Object.values(fighterA.powerstats).reduce((sum, value) => sum + value, 0);
+      const fighterBSum = Object.values(fighterB.powerstats).reduce((sum, value) => sum + value, 0);
+    
+      if(fighterASum > fighterBSum){
+        setWinnerName(fighterA.name);
+      } else {
+        setWinnerName(fighterB.name);
+      }
+    }
+  }, [fighterB]);
+
   return(
     <Modal open={isOpen} onClose={handleClose}>
       {
-        fighterA !== null ?
+        fighterB !== null ?
         (
-          <Box>
-            <Typography>Winner {fighterA.name}</Typography>
+          <Box className={styles.fighterModal}>
+            <Typography>Winner {winnerName}</Typography>
             <FighterDetails fighter={fighterA} />
             <List>
               <ListItem>

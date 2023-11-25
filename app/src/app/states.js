@@ -26,3 +26,8 @@ export const useFightModal = create((set) => ({
   open: false,
   setOpen: (toOpen) => set({open: toOpen}),
 }));
+
+export const useWinner = create((set) => ({
+  winner: '',
+  setWinner: (fighterName) => set({winner: fighterName}),
+}));
