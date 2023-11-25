@@ -45,9 +45,6 @@ export default function Topster() {
       console.log("Fight: "+fighterA.name+" vs. "+fighterB.name);
 
       setFightModalOpen(true);
-  
-      setFighterA(null);
-      setFighterB(null);
     }
   
   }, [fighterB])
