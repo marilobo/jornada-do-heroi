@@ -1,9 +1,10 @@
 "use client"
 
-import { Avatar, Box, Card, CardActionArea, CardContent, Divider, Drawer, Grid, Icon, ListItemButton, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardActionArea, CardContent, Drawer, Grid, ListItemButton, ListItemText, MenuItem, MenuList, Modal, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
-import { useHeroesFilter, useFightHeroes, useFilteredHeroes, useHeroesList } from "./states";
+import { useHeroesFilter, useFightHeroes, useFilteredHeroes, useHeroesList, useFightModal } from "./states";
+import FightModal from "./components/fightModal";
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -21,6 +22,7 @@ export default function Topster() {
   const setFighterA = useFightHeroes((state) => state.setFighterA);
   const fighterB = useFightHeroes((state) => state.fighterB);
   const setFighterB = useFightHeroes((state) => state.setFighterB);
+  const setFightModalOpen = useFightModal((state) => state.setOpen);
 
   useEffect(() => {
     async function fetchData() {
@@ -37,14 +39,18 @@ export default function Topster() {
     setFilteredHeroesList(filteredHeroes);
   }, [filterText])
 
-  const fight = () => {
+  useEffect(() => {
   
-    console.log("fight");
+    if(fighterB !== null){
+      console.log("Fight: "+fighterA.name+" vs. "+fighterB.name);
 
-    setFighterA(null);
-    setFighterB(null);
+      setFightModalOpen(true);
   
-  };
+      setFighterA(null);
+      setFighterB(null);
+    }
+  
+  }, [fighterB])
 
   const handleCardClick = (hero) => {
     console.log("entrei no handle");
@@ -57,7 +63,6 @@ export default function Topster() {
       console.log('cheguei no else');
       console.log("fighterB: " + hero.name);
       setFighterB(hero);
-      fight();
     }
   };
   
@@ -78,6 +83,7 @@ export default function Topster() {
           </MenuList>
         </Box>
       </Drawer>
+      <FightModal />
       <Grid container sx={{marginLeft:14, width: "calc(100% - 340px)"}} spacing={8} justifyContent="flex-start">
         {filteredHeroesList.map((hero) => 
           <Grid item key={hero.id}>
