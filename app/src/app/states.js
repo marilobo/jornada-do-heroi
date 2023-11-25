@@ -14,3 +14,10 @@ export const useFilteredHeroes = create((set) => ({
   filteredHeroes: [],
   setFilteredHeroes: (heroes) => set({filteredHeroes: heroes}),
 }));
+
+export const useFightHeroes = create((set) => ({
+  fighterA: null,
+  fighterB: null,
+  setFighterA: (newFighter) => set({fighterA: newFighter}),
+  setFighterB: (newFighter) => set({fighterB: newFighter}),
+}));
