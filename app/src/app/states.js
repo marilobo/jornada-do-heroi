@@ -14,3 +14,20 @@ export const useFilteredHeroes = create((set) => ({
   filteredHeroes: [],
   setFilteredHeroes: (heroes) => set({filteredHeroes: heroes}),
 }));
+
+export const useFightHeroes = create((set) => ({
+  fighterA: null,
+  fighterB: null,
+  setFighterA: (newFighter) => set({fighterA: newFighter}),
+  setFighterB: (newFighter) => set({fighterB: newFighter}),
+}));
+
+export const useFightModal = create((set) => ({
+  open: false,
+  setOpen: (toOpen) => set({open: toOpen}),
+}));
+
+export const useWinner = create((set) => ({
+  winner: '',
+  setWinner: (fighterName) => set({winner: fighterName}),
+}));
