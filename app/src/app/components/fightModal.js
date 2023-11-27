@@ -1,4 +1,4 @@
-import styles from '../styles.module.scss';
+import styles from '../style/styles.module.scss';
 import { Box, List, ListItem, ListItemText, Modal, Typography } from "@mui/material";
 import { useFightHeroes, useFightModal, useWinner } from "../states";
 import FighterDetails from "./fighterDetails";
