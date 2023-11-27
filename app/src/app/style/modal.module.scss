@@ -1,0 +1,50 @@
+.modal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fighterModal {
+  background-color: #11141b;
+  align-items: center;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 70px;
+}
+
+.winner {
+  color: greenyellow;
+}
+
+.fighters {
+  display: flex;
+}
+
+.fighterDetails {
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.fighterDetails:nth-child(3) {
+  flex-direction: row-reverse;
+}
+
+.list {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.list > * {
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.statsText {
+  padding-left: 50px;
+  padding-right: 50px;
+}

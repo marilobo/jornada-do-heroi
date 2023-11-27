@@ -5,13 +5,11 @@
   text-align: center;
 }
 
-.fighterModal {
-  display: flex;
-}
-
 .grid {
+  width: calc(100% - 364px);
   max-height: 100vh;
   overflow-y: scroll;
+  margin-left: 111px;
   margin-top: 0;
 }
 

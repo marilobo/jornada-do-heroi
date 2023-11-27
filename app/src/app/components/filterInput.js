@@ -13,6 +13,7 @@ const Search = styled('div')(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: 0,
+  marginRight: '20px',
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
@@ -59,7 +60,7 @@ export default function FilterInput() {
       <StyledInputBase
         value={searchText}
         onChange={handleInputChange}
-        placeholder={"Search..."}
+        placeholder={"Pesquisa..."}
       />      
     </Search>
   )

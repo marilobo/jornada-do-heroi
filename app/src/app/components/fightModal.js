@@ -1,4 +1,4 @@
-import styles from '../style/styles.module.scss';
+import styles from '../style/modal.module.scss';
 import { Box, List, ListItem, ListItemText, Modal, Typography } from "@mui/material";
 import { useFightHeroes, useFightModal, useWinner } from "../states";
 import FighterDetails from "./fighterDetails";
@@ -36,34 +36,36 @@ export default function FightModal(){
   }, [fighterB]);
 
   return(
-    <Modal open={isOpen} onClose={handleClose}>
+    <Modal open={isOpen} onClose={handleClose} className={styles.modal}>
       {
         fighterB !== null ?
         (
           <Box className={styles.fighterModal}>
-            <Typography>Winner {winnerName}</Typography>
-            <FighterDetails fighter={fighterA} />
-            <List>
-              <ListItem>
-                <ListItemText>Intelligence</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Strength</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Speed</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Durability</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Power</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Combat</ListItemText>
-              </ListItem>
-            </List>
-            <FighterDetails fighter={fighterB} />
+            <Typography><span className={styles.winner}>Winner</span> {winnerName}</Typography>
+            <Box className={styles.fighters}>
+              <FighterDetails fighter={fighterA} />
+              <List className={`${styles.list} ${styles.statsText}`}>
+                <ListItem>
+                  <ListItemText>Intelligence</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Strength</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Speed</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Durability</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Power</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Combat</ListItemText>
+                </ListItem>
+              </List>
+              <FighterDetails fighter={fighterB} />
+            </Box>
           </Box>
         ) : <></>
       }

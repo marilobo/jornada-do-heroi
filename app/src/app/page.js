@@ -67,8 +67,8 @@ export default function Topster() {
         </Box>
       </Drawer>
       <FightModal />
-      <Grid className={styles.grid}
-        container sx={{marginLeft:14, width: "calc(100% - 340px)"}}
+      <Grid container 
+        className={styles.grid}
         spacing={8}
         justifyContent="flex-start"
       >
