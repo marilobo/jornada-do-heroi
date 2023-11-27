@@ -15,7 +15,7 @@ export default function FighterDetails({fighter}) {
             <img src={ fighter.images.lg } width={200} alt="Fighter" />
             <Typography>{ fighter.name }</Typography>
           </Box>
-          <List>
+          <List className={styles.list}>
             {
               Object.values(fighter.powerstats).map((power) => (
                 <ListItem>
