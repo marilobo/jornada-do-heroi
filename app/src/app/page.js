@@ -1,12 +1,12 @@
 "use client"
 
 import styles from './style/styles.module.scss';
-import { Avatar, Box, Drawer, Grid, ListItemButton, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
+import { Avatar, Box, Drawer, Grid, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
-import { useHeroesFilter, useFightHeroes, useFilteredHeroes, useHeroesList, useFightModal } from "./states";
+import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList } from "./states";
 import FightModal from "./components/fightModal";
-import HeroCard from "./components/HeroCard";
+import HeroCard from './components/heroCard';
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -52,16 +52,14 @@ export default function Topster() {
   return (
     <Box>
       <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left"> 
-        <Box>
+        <Box className={styles.drawerBox}>
           <Avatar sx={{margin:"auto"}}/>
           <Typography>RICARDO</Typography>
         </Box>
         <Box>
           <MenuList>
-            <MenuItem>
-              <ListItemButton>
-                <ListItemText>Cartas</ListItemText>
-              </ListItemButton>            
+            <MenuItem className={styles.navigationButton}>
+              <ListItemText>Cartas</ListItemText>
             </MenuItem>
           </MenuList>
         </Box>
