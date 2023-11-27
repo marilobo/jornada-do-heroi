@@ -1,5 +1,6 @@
 "use client"
 
+import styles from './style/styles.module.scss';
 import { Avatar, Box, Drawer, Grid, ListItemButton, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
@@ -50,28 +51,32 @@ export default function Topster() {
   
   return (
     <Box>
-      <Drawer variant="permanent" open={true} anchor="left"> 
-        <Box sx={{textAlign:"center"}}>
+      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left"> 
+        <Box>
           <Avatar sx={{margin:"auto"}}/>
-          <Typography>Default</Typography>
+          <Typography>RICARDO</Typography>
         </Box>
         <Box>
           <MenuList>
             <MenuItem>
               <ListItemButton>
-                <ListItemText>Heroes</ListItemText>
+                <ListItemText>Cartas</ListItemText>
               </ListItemButton>            
             </MenuItem>
           </MenuList>
         </Box>
       </Drawer>
       <FightModal />
-      <Grid container sx={{marginLeft:14, width: "calc(100% - 340px)"}} spacing={8} justifyContent="flex-start">
+      <Grid className={styles.grid}
+        container sx={{marginLeft:14, width: "calc(100% - 340px)"}}
+        spacing={8}
+        justifyContent="flex-start"
+      >
         {filteredHeroesList.map((hero) => 
           <HeroCard key={hero.id} hero={hero} />
         )};
       </Grid>
-      <Drawer variant="permanent" open={true} anchor="right">
+      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="right">
         <FilterInput />
       </Drawer>
     </Box>
