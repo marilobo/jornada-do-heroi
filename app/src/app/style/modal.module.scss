@@ -40,7 +40,7 @@
   text-align: center;
 }
 
-.fighterDetails:nth-child(3) {
+.fighterDetails:nth-child(3), .fighterDetails:nth-child(3) > .list > li {
   flex-direction: row-reverse;
 }
 
@@ -49,7 +49,7 @@
   padding-bottom: 70px;
 }
 
-.list > * {
+.list > li {
   text-align: center;
   padding-top: 0px;
   padding-bottom: 0px;

@@ -47,7 +47,7 @@ export default function FightModal(){
             </IconButton>
             <Typography><span className={styles.winner}>Winner</span> {winnerName}</Typography>
             <Box className={styles.fighters}>
-              <FighterDetails fighter={fighterA} />
+              <FighterDetails fighter={fighterA} opponent={fighterB} />
               <List className={`${styles.list} ${styles.statsText}`}>
                 <ListItem>
                   <ListItemText>Intelligence</ListItemText>
@@ -68,7 +68,7 @@ export default function FightModal(){
                   <ListItemText>Combat</ListItemText>
                 </ListItem>
               </List>
-              <FighterDetails fighter={fighterB} />
+              <FighterDetails fighter={fighterB} opponent={fighterA} />
             </Box>
           </Box>
         ) : <></>
