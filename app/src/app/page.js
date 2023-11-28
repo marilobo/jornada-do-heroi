@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList } from "./states";
 import FightModal from "./components/fightModal";
 import HeroCard from './components/heroCard';
+import Link from 'next/link';
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -51,16 +52,18 @@ export default function Topster() {
   
   return (
     <Box>
-      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left"> 
+      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left">
         <Box className={styles.drawerBox}>
           <Avatar sx={{margin:"auto"}}/>
           <Typography>RICARDO</Typography>
         </Box>
         <Box>
           <MenuList>
-            <MenuItem className={styles.navigationButton}>
-              <ListItemText>Cartas</ListItemText>
-            </MenuItem>
+          <Link href="#index">
+              <MenuItem className={styles.navigationButton}>
+                <ListItemText>Cartas</ListItemText>
+              </MenuItem>
+            </Link>
           </MenuList>
         </Box>
       </Drawer>
@@ -70,6 +73,7 @@ export default function Topster() {
         spacing={8}
         justifyContent="flex-start"
       >
+        <span id="index" ></span>
         {filteredHeroesList.map((hero) => 
           <HeroCard key={hero.id} hero={hero} />
         )};
