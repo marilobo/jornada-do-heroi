@@ -1,10 +1,11 @@
 "use client"
 
 import styles from './style/styles.module.scss';
-import { Avatar, Box, Drawer, Grid, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
+import { Avatar, Box, Button, Drawer, Grid, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
-import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList } from "./states";
+import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList, useModalOpen } from "./states";
 import FightModal from "./components/fightModal";
 import HeroCard from './components/heroCard';
 import Link from 'next/link';
@@ -24,6 +25,8 @@ export default function Topster() {
   const fighterA = useFightHeroes((state) => state.fighterA);
   const fighterB = useFightHeroes((state) => state.fighterB);
   const setFightModalOpen = useFightModal((state) => state.setOpen);
+  const leftDrawerOpen = useModalOpen((state) => state.open);
+  const toggleLeftDrawerOpen = useModalOpen((state) => state.toggleOpen);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,17 +52,24 @@ export default function Topster() {
     }
   
   }, [fighterB]);
+
+  const toggle = () => {
+    toggleLeftDrawerOpen(leftDrawerOpen);
+  };
   
   return (
     <Box>
-      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left">
+      <Button className={styles.menu} onClick={toggle}>
+        <MenuIcon fontSize="large" />
+      </Button>
+      <Drawer className={`${styles.drawer} ${styles.leftDrawer}`} variant="persistent" open={leftDrawerOpen} anchor="left">
         <Box className={styles.drawerBox}>
           <Avatar sx={{margin:"auto"}}/>
           <Typography>RICARDO</Typography>
         </Box>
         <Box>
           <MenuList>
-          <Link href="#index">
+            <Link href="#index">
               <MenuItem className={styles.navigationButton}>
                 <ListItemText>Cartas</ListItemText>
               </MenuItem>
@@ -78,7 +88,7 @@ export default function Topster() {
           <HeroCard key={hero.id} hero={hero} />
         )};
       </Grid>
-      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="right">
+      <Drawer className={`${styles.drawer} ${styles.rightDrawer}`} variant="persistent" open={true} anchor="right">
         <FilterInput />
       </Drawer>
     </Box>

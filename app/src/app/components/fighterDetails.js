@@ -19,7 +19,7 @@ export default function FighterDetails({fighter, opponent}) {
           <List className={styles.list}>
             {
               Object.values(fighter.powerstats).map((powerValue, statsIndex) => (
-                <ListItem>
+                <ListItem key={`${fighter.id}`}>
                   <ListItemText>
                     {powerValue}
                   </ListItemText>

@@ -1,3 +1,19 @@
+.menu {
+  position: absolute;
+  z-index: 1250;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  color: whitesmoke;
+}
+
+.menu:hover {
+  background-color: rgba($color: #FFFFFF, $alpha: 0.25);
+}
+
+.leftDrawer > :first-child {
+  padding-top: 80px;
+}
+
 .drawer > * {
   background-color: #19191e;
   color: whitesmoke;
@@ -80,4 +96,43 @@
 .god {
   background-color: #341515;
   border: 1px solid #9c3f3f;
+}
+
+.heroName {
+  text-align: center;
+}
+
+@media (max-width: 1180px) {
+  .grid {
+    width: 100%;
+    margin-left: 0;
+  }
+  .card {
+    width: 15vw;
+  }
+  .rightDrawer {
+    visibility: hidden;
+  }
+  .search {
+    visibility: visible;
+    position: fixed;
+    left: 55px;
+    top: 13px;
+    background-color: #3F3F3F;
+  }
+  .search:hover {
+    background-color: #5A5A5A;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 20vw;
+  }
+}
+
+@media (max-width: 665px) {
+  .heroName {
+    font-size: 0.9em;
+  }
 }
