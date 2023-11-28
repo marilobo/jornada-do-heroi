@@ -1,10 +1,12 @@
 "use client"
 
-import { Avatar, Box, Card, CardActionArea, CardContent, Drawer, Grid, ListItemButton, ListItemText, MenuItem, MenuList, Modal, Typography } from "@mui/material";
+import styles from './style/styles.module.scss';
+import { Avatar, Box, Drawer, Grid, ListItemText, MenuItem, MenuList, Typography } from "@mui/material";
 import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
-import { useHeroesFilter, useFightHeroes, useFilteredHeroes, useHeroesList, useFightModal } from "./states";
+import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList } from "./states";
 import FightModal from "./components/fightModal";
+import HeroCard from './components/heroCard';
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
@@ -19,9 +21,7 @@ export default function Topster() {
   const filteredHeroesList = useFilteredHeroes((state) => state.filteredHeroes);
   const setFilteredHeroesList = useFilteredHeroes((state) => state.setFilteredHeroes);
   const fighterA = useFightHeroes((state) => state.fighterA);
-  const setFighterA = useFightHeroes((state) => state.setFighterA);
   const fighterB = useFightHeroes((state) => state.fighterB);
-  const setFighterB = useFightHeroes((state) => state.setFighterB);
   const setFightModalOpen = useFightModal((state) => state.setOpen);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Topster() {
     }
 
     fetchData();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const filteredHeroes = heroesList.filter((hero) => hero.name.toLowerCase().includes(filterText.toLowerCase()));
@@ -47,62 +47,34 @@ export default function Topster() {
       setFightModalOpen(true);
     }
   
-  }, [fighterB])
-
-  const handleCardClick = (hero) => {
-    console.log("entrei no handle");
-    if(fighterA === null){
-      console.log('cheguei no if');
-      console.log("fighterA: " + hero.name);
-      setFighterA(hero);
-    }
-    else{
-      console.log('cheguei no else');
-      console.log("fighterB: " + hero.name);
-      setFighterB(hero);
-    }
-  };
+  }, [fighterB]);
   
   return (
     <Box>
-      <Drawer variant="permanent" open={true} anchor="left"> 
-        <Box sx={{textAlign:"center"}}>
+      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="left"> 
+        <Box className={styles.drawerBox}>
           <Avatar sx={{margin:"auto"}}/>
-          <Typography>Default</Typography>
+          <Typography>RICARDO</Typography>
         </Box>
         <Box>
           <MenuList>
-            <MenuItem>
-              <ListItemButton>
-                <ListItemText>Heroes</ListItemText>
-              </ListItemButton>            
+            <MenuItem className={styles.navigationButton}>
+              <ListItemText>Cartas</ListItemText>
             </MenuItem>
           </MenuList>
         </Box>
       </Drawer>
       <FightModal />
-      <Grid container sx={{marginLeft:14, width: "calc(100% - 340px)"}} spacing={8} justifyContent="flex-start">
+      <Grid container 
+        className={styles.grid}
+        spacing={8}
+        justifyContent="flex-start"
+      >
         {filteredHeroesList.map((hero) => 
-          <Grid item key={hero.id}>
-            <Card sx={{width:"11vw"}}>
-              <CardActionArea onClick={() => handleCardClick(hero)}>
-                <CardContent>
-                  <img src={hero.images.lg}/>
-                  <Typography variant="h6" sx={{textAlign:"center"}}>{hero.name}</Typography>
-                  <Typography sx={{textAlign:"center"}}>
-                    <Typography>
-                      🗡️ {
-                        Object.values(hero.powerstats).reduce((sum, value) => sum + value, 0)
-                      }
-                    </Typography>
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
+          <HeroCard key={hero.id} hero={hero} />
         )};
       </Grid>
-      <Drawer variant="permanent" open={true} anchor="right">
+      <Drawer className={styles.drawer} variant="permanent" open={true} anchor="right">
         <FilterInput />
       </Drawer>
     </Box>

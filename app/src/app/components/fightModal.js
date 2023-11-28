@@ -1,5 +1,6 @@
-import styles from '../styles.module.scss';
-import { Box, List, ListItem, ListItemText, Modal, Typography } from "@mui/material";
+import styles from '../style/modal.module.scss';
+import { Box, IconButton, List, ListItem, ListItemText, Modal, Typography } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import { useFightHeroes, useFightModal, useWinner } from "../states";
 import FighterDetails from "./fighterDetails";
 import { useEffect } from 'react';
@@ -36,34 +37,39 @@ export default function FightModal(){
   }, [fighterB]);
 
   return(
-    <Modal open={isOpen} onClose={handleClose}>
+    <Modal open={isOpen} onClose={handleClose} className={styles.modal}>
       {
         fighterB !== null ?
         (
           <Box className={styles.fighterModal}>
-            <Typography>Winner {winnerName}</Typography>
-            <FighterDetails fighter={fighterA} />
-            <List>
-              <ListItem>
-                <ListItemText>Intelligence</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Strength</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Speed</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Durability</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Power</ListItemText>
-              </ListItem>
-              <ListItem>
-                <ListItemText>Combat</ListItemText>
-              </ListItem>
-            </List>
-            <FighterDetails fighter={fighterB} />
+            <IconButton onClick={handleClose} className={styles.close} size="large">
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+            <Typography><span className={styles.winner}>Winner</span> {winnerName}</Typography>
+            <Box className={styles.fighters}>
+              <FighterDetails fighter={fighterA} opponent={fighterB} />
+              <List className={`${styles.list} ${styles.statsText}`}>
+                <ListItem>
+                  <ListItemText>Intelligence</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Strength</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Speed</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Durability</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Power</ListItemText>
+                </ListItem>
+                <ListItem>
+                  <ListItemText>Combat</ListItemText>
+                </ListItem>
+              </List>
+              <FighterDetails fighter={fighterB} opponent={fighterA} />
+            </Box>
           </Box>
         ) : <></>
       }

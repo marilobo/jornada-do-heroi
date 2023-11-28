@@ -1,0 +1,83 @@
+.drawer > * {
+  background-color: #19191e;
+  color: whitesmoke;
+  padding-top: 20px;
+  text-align: center;
+  min-width: 160px;
+}
+
+.drawerBox > * {
+  padding-top: 10px;
+}
+
+.navigationButton {
+  background-color: rgba($color: #FFFFFF, $alpha: 0.25);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.navigationButton:hover {
+  background-color: rgba($color: #FFFFFF, $alpha: 0.5);
+}
+
+.grid {
+  width: calc(100% - 394px);
+  max-height: 100vh;
+  overflow-y: scroll;
+  margin-left: 140px;
+  margin-top: 0;
+}
+
+.grid::-webkit-scrollbar {
+  width: 0.5em;
+}
+ 
+.grid::-webkit-scrollbar-track {
+  margin-top: 68px;
+}
+ 
+.grid::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 6px;
+  outline: 1px solid slategrey;
+}
+
+.card {
+  transition: transform 0.3s ease;
+  width: 11vw;
+  color: whitesmoke;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.normal {
+  background-color: #292929;
+  border: 1px solid #6f6f6f;
+}
+
+.normal img {
+  box-shadow: 5px 5px 10px rgba(79, 79, 79, 0.5);
+}
+
+.rare {
+  // background-color: rgba(0, 128, 0, 0.377);
+  background-color: #132819;
+  border: 1px solid #51a468
+}
+
+.epic {
+  background-color: #20142d;
+  border: 1px solid #603c6f;
+}
+
+.legendary {
+  background-color: #342715;
+  border: 1px solid #9c6f3f;
+}
+
+.god {
+  background-color: #341515;
+  border: 1px solid #9c3f3f;
+}
