@@ -64,7 +64,7 @@ export default function Topster() {
       </Button>
       <Drawer className={`${styles.drawer} ${styles.leftDrawer}`} variant="persistent" open={leftDrawerOpen} anchor="left">
         <Box className={styles.drawerBox}>
-          <Avatar sx={{margin:"auto"}}/>
+          <Avatar className={styles.avatar}/>
           <Typography>RICARDO</Typography>
         </Box>
         <Box>
