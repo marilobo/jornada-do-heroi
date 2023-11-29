@@ -6,7 +6,7 @@ import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
 import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList } from "./states";
 import FightModal from "./components/fightModal";
-import HeroCard from './components/heroCard';
+import HeroCard from './components/HeroCard';
 
 async function getHeroes(){
   const response = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
