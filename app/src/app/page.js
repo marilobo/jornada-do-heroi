@@ -7,7 +7,7 @@ import FilterInput from "./components/filterInput";
 import { useEffect } from "react";
 import { useHeroesFilter, useFightHeroes, useFightModal, useFilteredHeroes, useHeroesList, useModalOpen } from "./states";
 import FightModal from "./components/fightModal";
-import HeroCard from './components/heroCard';
+import HeroCard from './components/HeroCard';
 import Link from 'next/link';
 
 async function getHeroes(){
