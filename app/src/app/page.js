@@ -16,7 +16,7 @@ async function getHeroes(){
 }
 
 
-export default function Topster() {
+export default function Home() {
   const heroesList = useHeroesList((state) => state.heroesList);
   const setHeroesList = useHeroesList((state) => state.setHeroesList);
   const filterText = useHeroesFilter((state) => state.searchText);
@@ -46,8 +46,6 @@ export default function Topster() {
   useEffect(() => {
   
     if(fighterB !== null){
-      console.log("Fight: "+fighterA.name+" vs. "+fighterB.name);
-
       setFightModalOpen(true);
     }
   

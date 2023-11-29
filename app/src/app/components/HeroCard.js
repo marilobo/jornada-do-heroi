@@ -26,11 +26,9 @@ export default function HeroCard({hero}) {
           <CardContent className={styles.heroText}>
             <img src={hero.images.lg}/>
             <Typography>{hero.name}</Typography>
-            <Box>
-              <Typography>
-                🗡️ {powerSum}
-              </Typography>
-            </Box>
+            <Typography>
+              🗡️ {powerSum}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
