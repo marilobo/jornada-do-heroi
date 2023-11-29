@@ -25,7 +25,7 @@ export default function HeroCard({hero}) {
         <CardActionArea onClick={() => handleCardClick(hero)}>
           <CardContent>
             <img src={hero.images.lg}/>
-            <Typography variant="h6" sx={{textAlign:"center"}}>{hero.name}</Typography>
+            <Typography variant="h6" className={styles.heroName}>{hero.name}</Typography>
             <Box sx={{textAlign:"center"}}>
               <Typography>
                 🗡️ {powerSum}

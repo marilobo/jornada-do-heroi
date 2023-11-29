@@ -11,15 +11,15 @@ export default function FighterDetails({fighter, opponent}) {
     <>
       { fighter !== null ? 
         (
-        <Box className={`${styles.fighterDetails}`}>
-          <Box>
-            <img src={ fighter.images.lg } width={200} alt="Fighter" />
-            <Typography>{ fighter.name }</Typography>
+        <Box className={styles.fighterDetails}>
+          <Box className={styles.card}>
+            <img src={ fighter.images.lg } alt="Fighter" />
+            <Typography className={styles.heroName}>{ fighter.name }</Typography>
           </Box>
           <List className={styles.list}>
             {
               Object.values(fighter.powerstats).map((powerValue, statsIndex) => (
-                <ListItem>
+                <ListItem key={`${fighter.id}`}>
                   <ListItemText>
                     {powerValue}
                   </ListItemText>
