@@ -15,10 +15,15 @@
   padding: 120px 70px;
 }
 
+.card {
+  width: 200px;
+}
+
 .close {
-  margin-right: -29.5em;
-  margin-top: -4em;
-  margin-bottom: 4em;
+  transform: scale(1.2);
+  margin-right: -830px;
+  margin-top: -107px;
+  margin-bottom: 107px;
   color: whitesmoke;
 }
 
@@ -26,7 +31,7 @@
   background-color: rgba($color: #FFFFFF, $alpha: 0.25);
 }
 
-.winner {
+.winner > span {
   color: greenyellow;
 }
 
@@ -58,4 +63,66 @@
 .statsText {
   padding-left: 50px;
   padding-right: 50px;
+}
+
+@media (max-width: 950px) {
+  .fighterModal {
+    padding: 0 10px;
+  }
+  .close {
+    margin-right: -740px;
+    margin-top: 1px;
+    margin-bottom: -1px;
+  }
+}
+
+@media (max-width: 800px) {
+  .card {
+    width: 100px;
+  }
+  .close {
+    margin-right: -540px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 50px;
+  }
+  .close {
+    margin-right: -440px;
+  }
+  .heroName {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: 9vw;
+  }
+  .close {
+    transform: scale(0.8);
+    margin-right: 0;
+  }
+  .winner {
+    font-size: 0.5em;
+  }
+  .heroName {
+    font-size: 0.5em;
+  }
+  .list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .list > li > div > span {
+    font-size: 0.5em;
+  }
+  .statsText {
+    margin-top: 0.8vh;
+    padding: 0;
+  }
+  .statsText > * {
+    margin-top: 4px;
+  }
 }
