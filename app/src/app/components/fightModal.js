@@ -45,7 +45,7 @@ export default function FightModal(){
             <IconButton onClick={handleClose} className={styles.close} size="large">
               <CloseIcon fontSize="inherit" />
             </IconButton>
-            <Typography><span className={styles.winner}>Winner</span> {winnerName}</Typography>
+            <Typography className={styles.winner}><span>Winner</span> {winnerName}</Typography>
             <Box className={styles.fighters}>
               <FighterDetails fighter={fighterA} opponent={fighterB} />
               <List className={`${styles.list} ${styles.statsText}`}>

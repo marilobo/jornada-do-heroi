@@ -1,5 +1,6 @@
 "use client"
 
+import styles from '../style/styles.module.scss';
 import { InputBase } from "@mui/material";
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
@@ -53,7 +54,7 @@ export default function FilterInput() {
   };
 
   return (
-    <Search>
+    <Search className={styles.search}>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
