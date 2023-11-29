@@ -16,7 +16,7 @@ async function getHeroes(){
 }
 
 
-export default function Topster() {
+export default function Home() {
   const heroesList = useHeroesList((state) => state.heroesList);
   const setHeroesList = useHeroesList((state) => state.setHeroesList);
   const filterText = useHeroesFilter((state) => state.searchText);
@@ -46,8 +46,6 @@ export default function Topster() {
   useEffect(() => {
   
     if(fighterB !== null){
-      console.log("Fight: "+fighterA.name+" vs. "+fighterB.name);
-
       setFightModalOpen(true);
     }
   
@@ -64,7 +62,7 @@ export default function Topster() {
       </Button>
       <Drawer className={`${styles.drawer} ${styles.leftDrawer}`} variant="persistent" open={leftDrawerOpen} anchor="left">
         <Box className={styles.drawerBox}>
-          <Avatar sx={{margin:"auto"}}/>
+          <Avatar className={styles.avatar}/>
           <Typography>RICARDO</Typography>
         </Box>
         <Box>

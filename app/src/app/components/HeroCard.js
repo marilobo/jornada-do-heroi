@@ -23,14 +23,12 @@ export default function HeroCard({hero}) {
     <Grid item>
       <Card className={`${cardClass} ${styles.card}`}>
         <CardActionArea onClick={() => handleCardClick(hero)}>
-          <CardContent>
+          <CardContent className={styles.heroText}>
             <img src={hero.images.lg}/>
-            <Typography variant="h6" className={styles.heroName}>{hero.name}</Typography>
-            <Box sx={{textAlign:"center"}}>
-              <Typography>
-                🗡️ {powerSum}
-              </Typography>
-            </Box>
+            <Typography>{hero.name}</Typography>
+            <Typography>
+              🗡️ {powerSum}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>

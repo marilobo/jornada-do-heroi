@@ -26,6 +26,10 @@
   padding-top: 10px;
 }
 
+.avatar {
+  margin: auto;
+}
+
 .navigationButton {
   background-color: rgba($color: #FFFFFF, $alpha: 0.25);
   border-radius: 10px;
@@ -98,8 +102,12 @@
   border: 1px solid #9c3f3f;
 }
 
-.heroName {
+.heroText {
   text-align: center;
+}
+
+.heroText > * {
+  font-size: 1.3em;
 }
 
 @media (max-width: 1180px) {
@@ -109,6 +117,9 @@
   }
   .card {
     width: 15vw;
+  }
+  .heroText > * {
+    font-size: 1em;
   }
   .rightDrawer {
     visibility: hidden;
@@ -132,13 +143,13 @@
 }
 
 @media (max-width: 665px) {
-  .heroName {
+  .heroText > * {
     font-size: 0.9em;
   }
 }
 
 @media (max-width: 500px) {
-  .heroName {
+  .heroText > * {
     font-size: 2.7vw;
   }
 }
